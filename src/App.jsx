@@ -7,8 +7,8 @@ function App(){
 
     <>
 
-    < Header titulo ="LANCHYS"   /* aqui famos fazer os pedacinhos*/
-      subtitulo =" the best hot-dog" /> 
+    < Header titulo ="LANCHYS"   subtitulo =" the best hot-dog" /> 
+      {/* aqui famos fazer os pedacinhos */}
     <Login />
     
     </>

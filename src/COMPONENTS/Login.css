@@ -1,0 +1,55 @@
+/* Container branco com bordas cinzas e arredondadas */
+.login-container {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    width: 320px;
+    padding: 25px;
+    margin: 40px auto; /* Centraliza o bloco na tela */
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05); /* Sombra bem leve */
+  }
+  
+  .login-container h2 {
+    font-family: Arial, sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Formulário empilhado */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espaço entre os inputs e o botão */
+  }
+  
+  /* Inputs de texto e senha */
+  .login-input {
+    border: 1px solid #b3b3b3;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 0.9rem;
+    outline: none;
+  }
+  
+  .login-input::placeholder {
+    color: #a0a0a0;
+  }
+  
+  /* Botão entrar cinza claro */
+  .login-button {
+    background-color: #eaeaea;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #333333;
+    transition: background-color 0.2s;
+  }
+  
+  .login-button:hover {
+    background-color: #dfdfdf; /* Efeito ao passar o mouse */
+  }
+  

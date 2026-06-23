@@ -1,11 +1,19 @@
+import "./header.css"
 function Header({titulo, subtitulo}) {
     return (
 <>
-        <h1> {titulo} </h1>
-        <h2> {subtitulo} </h2>
+        <div className="titulo">
        
+        <h1> {titulo} </h1>
+        
+        </div>
 
-</>
+        <div className="Login">
+        <h2>{subtitulo}</h2>
+      </div>
+    </>
+       
+       
     )
 }
 
