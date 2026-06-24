@@ -1,10 +1,12 @@
 import "./header.css"
+
+
 function Header({titulo, subtitulo}) {
     return (
 <>
         <div className="titulo">
        
-        <h1> {titulo} </h1>
+       <h1>{titulo}</h1>
         
         </div>
 
