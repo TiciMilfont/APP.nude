@@ -17,6 +17,25 @@
   }
 }
 
+
+.menu-apresenta {
+  display: flex;            /* Ativa o alinhamento horizontal */
+  flex-direction: row;      /* Garante que fiquem em linha */
+  justify-content: center;  /* Centraliza o bloco na tela */
+  gap: 30px;                /* Dá um espaçamento bacana entre cada card */
+  flex-wrap: wrap;          /* Se a tela encolher, eles quebram linha */
+  margin-top: 20px;         /* Empurra um pouco para baixo para desgrudar do de cima */
+}
+
+.menu-produtos {
+  display: flex;            /* Ativa o alinhamento horizontal */
+  flex-direction: row;      /* Garante que fiquem em linha */
+  justify-content: center;  /* Centraliza o bloco na tela */
+  gap: 30px;                /* Dá um espaçamento bacana entre cada card */
+  flex-wrap: wrap;          /* Se a tela encolher, eles quebram linha */
+  margin-top: 20px;         /* Empurra um pouco para baixo para desgrudar do de cima */
+}
+
 .hero {
   position: relative;
 
