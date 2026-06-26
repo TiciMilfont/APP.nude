@@ -19,12 +19,12 @@
 
 
 .menu-apresenta {
-  display: flex;            /* Ativa o alinhamento horizontal */
-  flex-direction: row;      /* Garante que fiquem em linha */
-  justify-content: center;  /* Centraliza o bloco na tela */
-  gap: 30px;                /* Dá um espaçamento bacana entre cada card */
-  flex-wrap: wrap;          /* Se a tela encolher, eles quebram linha */
-  margin-top: 20px;         /* Empurra um pouco para baixo para desgrudar do de cima */
+  display: flex;            
+  flex-direction: row;      
+  justify-content: center;  
+  gap: 30px;                
+  flex-wrap: wrap;          
+  margin-top: 20px;         
 }
 
 .menu-produtos {
@@ -200,4 +200,39 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+
+.card-total-geral {
+  background-color: #f8f9fa;
+  border: 3px solid #b62815;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 450px;       /* Aumentamos um pouquinho a largura */
+  margin: 30px auto;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Criamos essa regra para controlar o tamanho do título do total e evitar que quebre linha */
+.card-total-geral h1 {
+  font-size: 28px;        /* Reduz um pouco o tamanho da fonte para caber na horizontal */
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;               /* Dá um espaço controlado entre o texto e o número */
+}
+.btn-finalizar {
+  background-color: #ce1a0d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-finalizar:hover {
+  background-color: #e7d31d;
 }
