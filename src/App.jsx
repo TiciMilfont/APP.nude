@@ -6,26 +6,33 @@ import Contador from "./COMPONENTS/Contador";
 import "./App.css";
 
 function App() {
-  // 1. Criamos os estados de cada lanche aqui no App
-  const [qtdTradicional, setQtdTradicional] = useState(0);
-  const [qtdEspecial, setQtdEspecial] = useState(0);
-  const [qtdCosmico, setQtdCosmico] = useState(0);
 
-  // 2. Preços definidos
-  const pTradicional = 20;
-  const pEspecial = 28;
-  const pCosmico = 35;
+const Lanches = [ 
+  { id: 1, nome: "Hot-Tradicional", preco: 20 },
+  { id: 2, nome: "Hot-Especial", preco: 28 },
+  { id: 3, nome: "Hot-Cósmico", preco: 35 }
+];
 
-  // 3. Cálculo do Total Geral
-  const valorTotalPedido = 
-    (qtdTradicional * pTradicional) + 
-    (qtdEspecial * pEspecial) + 
-    (qtdCosmico * pCosmico);
+return  (
 
-  return (
-    <>
+  <>
       <Header titulo="LANCHYS" subtitulo="the best hot-dog" />
       <Login />
+
+      <div className = "lista_cards">
+
+      {
+      Lanches.map (lanche => (
+        <cardprod
+        key= {lanche.id}
+        nome= {lanche.nome}
+        preco={lanche.preco}
+        />
+      ))}
+    </div>
+  </>
+); // Fecha o return
+} // Fecha a função App lá embaixo
 
       <div className="menu-produtos">
         <Contador 
