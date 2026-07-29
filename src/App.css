@@ -17,7 +17,6 @@
   }
 }
 
-
 .menu-apresenta {
   display: flex;            
   flex-direction: row;      
@@ -29,7 +28,7 @@
 
 .menu-produtos {
   display: flex;            /* Ativa o alinhamento horizontal */
-  flex-direction: row;      /* Garante que fiquem em linha */
+  flex-direction: row;      /* Garante que fiquem in linha */
   justify-content: center;  /* Centraliza o bloco na tela */
   gap: 30px;                /* Dá um espaçamento bacana entre cada card */
   flex-wrap: wrap;          /* Se a tela encolher, eles quebram linha */
@@ -202,26 +201,50 @@
   }
 }
 
+/* ==========================================================================
+   RESUMO DO PEDIDO 
+   ========================================================================== */
 .card-total-geral {
   background-color: #f8f9fa;
   border: 3px solid #b62815;
   border-radius: 15px;
   padding: 20px;
-  max-width: 450px;       /* Aumentamos um pouquinho a largura */
+  max-width: 450px;       
   margin: 30px auto;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Criamos essa regra para controlar o tamanho do título do total e evitar que quebre linha */
-.card-total-geral h1 {
-  font-size: 28px;        /* Reduz um pouco o tamanho da fonte para caber na horizontal */
+.total-itens-texto {
+  color: #64748b;
+}
+
+.lista-resumo-itens {
+  text-align: left;
+  margin: 15px auto;
+  max-width: 280px;
+}
+
+.lista-resumo-itens p {
+  margin: 5px 0;
+}
+
+.carrinho-vazio-texto {
+  color: #94a3b8;
+  text-align: center;
+  font-style: italic;
+}
+
+.total-geral-preco {
+  font-size: 28px;        
   margin: 15px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;               /* Dá um espaço controlado entre o texto e o número */
+  gap: 8px;               
+  color: #27ae60;
 }
+
 .btn-finalizar {
   background-color: #ce1a0d;
   color: white;
@@ -231,8 +254,136 @@
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
+  transition: background-color 0.2s;
 }
 
 .btn-finalizar:hover {
   background-color: #e7d31d;
+}
+
+/* ==========================================================================
+   EQUIPE DE FUNCIONÁRIOS
+   ========================================================================== */
+.secao-equipe {
+  margin-top: 30px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.secao-equipe h2 {
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.container-funcionarios {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-funcionario {
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-funcionario:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.card-funcionario h3 {
+  margin: 0 0 5px 0;
+  color: #1e293b;
+}
+
+.card-funcionario p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   CARDS DE PRODUTOS UNIFICADOS (CardProd)
+   ========================================================================== */
+.card-item-completo {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden; 
+  background: #ffffff;
+  width: 240px;      
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card-item-completo:hover {
+  transform: translateY(-4px);
+}
+
+.img-lanche-card {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-conteudo {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-conteudo h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.preco-unitario, .quantidade-texto, .subtotal-texto {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.subtotal-texto {
+  font-weight: bold;
+  color: #27ae60;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.botoes-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.botoes-container button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.botoes-container button:hover {
+  background: #e2e8f0;
+}
+
+/* Estilo para a foto do funcionário dentro do card */
+.img-funcionario-card {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Faz a foto ficar perfeitamente redonda */
+  object-fit: cover;   /* Corta a imagem sem distorcer */
+  margin: 0 auto 10px auto;
+  display: block;
+  border: 2px solid #e2e8f0;
 }
