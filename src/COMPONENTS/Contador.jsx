@@ -1,10 +1,16 @@
 import React from 'react';
 
-function Contador({ nome, preco, quantidade, setQuantidade }) {
+// O Contador RECEBE quantidade e setQuantidade do App.jsx através das props
+function Contador({ preco, quantidade, setQuantidade }) {
   
-  const adicionar = () => setQuantidade(quantidade + 1);
+  const adicionar = () => {
+    setQuantidade(quantidade + 1);
+  };
+
   const remover = () => {
-    if (quantidade > 0) setQuantidade(quantidade - 1);
+    if (quantidade > 0) {
+      setQuantidade(quantidade - 1);
+    }
   };
 
   return (
@@ -21,4 +27,3 @@ function Contador({ nome, preco, quantidade, setQuantidade }) {
 }
 
 export default Contador;
-

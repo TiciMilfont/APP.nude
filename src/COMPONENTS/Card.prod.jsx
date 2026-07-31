@@ -1,5 +1,5 @@
 import React from 'react';
-import Contador from './Contador'; // Importamos o contador para usar aqui dentro
+import Contador from './Contador';
 
 function CardProd({ nome, preco, imagem, quantidade, setQuantidade }) {
   return (
@@ -10,7 +10,7 @@ function CardProd({ nome, preco, imagem, quantidade, setQuantidade }) {
         <h3>{nome}</h3>
         <p className="preco-unitario">Preço unitário: R$ {preco}</p>
         
-        {/* Chamamos o contador aqui dentro, passando o que ele precisa */}
+        {/* ATENÇÃO AQUI: setQuantidade={setQuantidade} precisa ser repassado */}
         <Contador 
           nome={nome}
           preco={preco}

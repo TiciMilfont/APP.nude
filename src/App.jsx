@@ -3,10 +3,10 @@ import Header from "./COMPONENTS/HEADER";
 import Login from "./COMPONENTS/login";
 import Funcionario from "./COMPONENTS/Funcionario";
 import CardProd from "./COMPONENTS/Card.prod";
+import AlertaPopup from "./COMPONENTS/AlertaPopup";
 import "./App.css";
 
 function App() {
-  // 1. Estrutura de produtos igual ao padrão do professor
   const lanches = [
     { id: 1, nome: "Hot-Dog Tradicional", preco: 20, categoria: "Dogs", imagem: "/imagem/tradi.png" },
     { id: 2, nome: "Hot-Dog Especial", preco: 28, categoria: "Dogs", imagem: "/imagem/espe.png" },
@@ -16,84 +16,112 @@ function App() {
     { id: 6, nome: "Suco", preco: 10, categoria: "Drinks", imagem: "/imagem/suco.jpg" },
   ];
 
-  // 2. Estado único para gerenciar as quantidades de todos os itens pelo ID
+  // Estado das quantidades iniciando zerado para cada ID
   const [quantidades, setQuantidades] = useState({
-    1: 0, // Hot-Dog Tradicional
-    2: 0, // Hot-Dog Especial
-    3: 0, // Hot-Dog Cósmico
-    4: 0, // Coca-Cola
-    5: 0, // Água
-    6: 0  // Suco
+    1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0
   });
 
-  // Função auxiliar para atualizar a quantidade de um item específico
-  const atualizarQuantidade = (id, novaQtd) => {
+  // Estado para controlar o Pop-up do alerta
+  const [produtoAlerta, setProdutoAlerta] = useState(null);
+
+  // Função para alterar a quantidade de um item
+  const alterarQtd = (id, novaQtd) => {
+    const qtdAntiga = quantidades[id] || 0;
+
+    // Se AUMENTOU, abre o alerta com o produto
+    if (novaQtd > qtdAntiga) {
+      const itemAdicionado = lanches.find((p) => p.id === id);
+      setProdutoAlerta(itemAdicionado);
+    }
+
+    // Atualiza o objeto de quantidades
     setQuantidades((prev) => ({
       ...prev,
-      [id]: Math.max(0, novaQtd) // Garante que não fique menor que 0
+      [id]: Math.max(0, novaQtd)
     }));
   };
 
-  // Lista estática da equipe de funcionários
+  // Zera a sacola
+  const esvaziarSacola = () => {
+    setQuantidades({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 });
+  };
+
+  // Cálculos dinâmicos
+  const totalItens = Object.values(quantidades).reduce((acc, curr) => acc + curr, 0);
+  
+  const valorTotalPedido = lanches.reduce((total, item) => {
+    return total + item.preco * (quantidades[item.id] || 0);
+  }, 0);
+
   const dadosFuncionarios = [
     { id: 1, nome: "Maria", cargo: "Gerente", imagem: "/imagem/dog3.jpg" },
     { id: 2, nome: "João", cargo: "Atendente", imagem: "/imagem/dog2.jpg" },
     { id: 3, nome: "Carlos", cargo: "Chapeiro", imagem: "/imagem/dod1.jpg" }
   ];
 
-  // 3. Cálculo dinâmico do total do pedido percorrendo a lista
-  const valorTotalPedido = lanches.reduce((total, item) => {
-    return total + item.preco * (quantidades[item.id] || 0);
-  }, 0);
-
-  // Cálculo do total de itens no carrinho
-  const totalItens = Object.values(quantidades).reduce((acc, qtd) => acc + qtd, 0);
-
   return (
     <>
-      <Header titulo="LANCHYS" subtitulo="the best hot-dog" />
+      {/* POP-UP ALERTA */}
+      {produtoAlerta && (
+        <AlertaPopup
+          produto={produtoAlerta}
+          onClose={() => setProdutoAlerta(null)}
+        />
+      )}
+
+      {/* HEADER */}
+      <Header 
+        titulo="LANCHYS" 
+        subtitulo="the best hot-dog" 
+        totalItens={totalItens} 
+      />
+
       <Login />
 
-      {/* SEÇÃO DE DOGS */}
-<h2 className="titulo-categoria">🌭 Dogs</h2>
-<div className="menu-produtos">
-  {lanches
-    .filter((produto) => produto.categoria === "Dogs")
-    .map((produto) => (
-      <CardProd
-        key={produto.id}
-        nome={produto.nome}
-        preco={produto.preco}
-        imagem={produto.imagem}
-        quantidade={quantidades[produto.id] || 0}
-        setQuantidade={(novaQtd) => atualizarQuantidade(produto.id, novaQtd)}
-      />
-    ))}
-</div>
+      {/* DOGS */}
+      <h2 className="titulo-categoria"> DOGS </h2>
+      <div className="menu-produtos">
+        {lanches
+          .filter((p) => p.categoria === "Dogs")
+          .map((produto) => (
+            <CardProd
+              key={produto.id}
+              nome={produto.nome}
+              preco={produto.preco}
+              imagem={produto.imagem}
+              quantidade={quantidades[produto.id] || 0}
+              setQuantidade={(novaQtd) => alterarQtd(produto.id, novaQtd)}
+            />
+          ))}
+      </div>
 
-{/* SEÇÃO DE DRINKS */}
-<h2 className="titulo-categoria">🥤 Drinks</h2>
-<div className="menu-produtos">
-  {lanches
-    .filter((produto) => produto.categoria === "Drinks")
-    .map((produto) => (
-      <CardProd
-        key={produto.id}
-        nome={produto.nome}
-        preco={produto.preco}
-        imagem={produto.imagem}
-        quantidade={quantidades[produto.id] || 0}
-        setQuantidade={(novaQtd) => atualizarQuantidade(produto.id, novaQtd)}
-      />
-    ))}
-</div>
+      {/* DRINKS */}
+      <h2 className="titulo-categoria"> DRINKS </h2>
+      <div className="menu-produtos">
+        {lanches
+          .filter((p) => p.categoria === "Drinks")
+          .map((produto) => (
+            <CardProd
+              key={produto.id}
+              nome={produto.nome}
+              preco={produto.preco}
+              imagem={produto.imagem}
+              quantidade={quantidades[produto.id] || 0}
+              setQuantidade={(novaQtd) => alterarQtd(produto.id, novaQtd)}
+            />
+          ))}
+      </div>
 
-      {/* Seção do Resumo do Pedido */}
+      {/* RESUMO DO PEDIDO */}
       <div className="card-total-geral">
+        {/* Imagem da sacola adicionada aqui */}
+  <img 
+    src="/imagem/sac.jpg" 
+    alt="Sacola de Compras" 
+    className="img-sacola-resumo" 
+  />
         <h2>Resumo do Pedido</h2>
-        <p className="total-itens-texto">
-          Total de itens: {totalItens}
-        </p>
+        <p className="total-itens-texto">Total de itens: {totalItens}</p>
 
         <hr />
 
@@ -108,7 +136,6 @@ function App() {
             );
           })}
 
-          {/* Mensagem exibida apenas quando o carrinho está vazio */}
           {totalItens === 0 && (
             <p className="carrinho-vazio-texto">Nenhum item selecionado</p>
           )}
@@ -117,14 +144,22 @@ function App() {
         <hr />
 
         <h1 className="total-geral-preco">Total Geral: R$ {valorTotalPedido}</h1>
-        <button className="btn-finalizar">Finalizar Compra</button>
+
+        <div className="botoes-resumo">
+          <button className="btn-finalizar">Finalizar Compra</button>
+          
+          {totalItens > 0 && (
+            <button className="btn-esvaziar" onClick={esvaziarSacola}>
+              🗑️ Esvaziar Sacola
+            </button>
+          )}
+        </div>
       </div>
 
-      {/* Seção da Equipe de Funcionários */}
+      {/* EQUIPE */}
       <div className="secao-equipe">
         <hr />
         <h2>Nossa Equipe</h2>
-        
         <div className="container-funcionarios">
           {dadosFuncionarios.map((func) => (
             <Funcionario 

@@ -3,9 +3,81 @@
 }
 
 .titulo h1{
-    color: rgb(204, 204, 66);
+    color: rgb(236, 209, 54);
 }
 
 
 
 
+.sacola-header {
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .btn-sacola {
+    background-color: #e6db49;
+    color: rgb(167, 48, 48);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  .btn-sacola:hover {
+    background-color: #e4e25f;
+    transform: scale(1.05);
+  }
+
+  /* Botão da sacola no Header */
+.btn-sacola {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .btn-sacola:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Imagem da sacola no Header */
+  .img-sacola-header {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  /* Contador de itens ao lado da imagem */
+  .badge-contador {
+    background-color: #e53e3e;
+    color: rgb(190, 26, 26);
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+
+  .btn-sacola {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre a imagem e o texto */
+  }
+  
+  .img-sacola-header {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
