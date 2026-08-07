@@ -501,3 +501,108 @@
   margin: 0 auto 10px auto;
   display: block;
 }
+
+//* ==========================================================================
+   NAVEGAÇÃO POR PÁGINAS (LOJA X COZINHA)
+   ========================================================================== */
+.menu-navegacao-paginas {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0 25px 0;
+}
+
+.btn-aba {
+  background-color: #f8fafc;
+  border: 2px solid #8b1515;
+  color: #8b1515;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-aba:hover {
+  background-color: #f1f5f9;
+}
+
+.btn-aba.ativa {
+  background-color: #8b1515;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(139, 21, 21, 0.2);
+}
+
+/* Estilo da Página Exclusiva da Cozinha */
+.secao-cozinha-pagina {
+  margin: 20px auto;
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.titulo-pagina-cozinha {
+  color: #8b1515;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cozinha-vazia-texto {
+  color: #94a3b8;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 40px;
+}
+
+/* ==========================================================================
+   AJUSTES DE LAYOUT E TABELA DO CARRINHO
+   ========================================================================== */
+
+   .card-total-geral {
+    background-color: #ffffff;
+    border: 3px solid #8b1515;
+    border-radius: 15px;
+    padding: 24px;
+    width: 100%;
+    max-width: 550px; /* Largura expandida para caber a tabela confortavelmente */
+    margin: 30px auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+  }
+  
+  .tabela-carrinho-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 15px 0;
+  }
+  
+  .tabela-carrinho {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .tabela-carrinho th {
+    background-color: #f8fafc;
+    color: #8b1515;
+    padding: 10px 8px;
+    font-weight: bold;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  
+  .tabela-carrinho td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+  }
+  
+  .tabela-carrinho tr:last-child td {
+    border-bottom: none;
+  }
