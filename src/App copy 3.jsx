@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-
-// Imports das Páginas (exatamente como na aula do seu professor)
-import Home from "./pages/Home";
-import Carrinho from "./pages/Carrinho";
-import Pedido from "./pages/Pedido";
-import Login from "./pages/Login";
-
+import Header from "./Components/HEADER";
+import Login from "./pages/login";
+import Funcionario from "./Components/Funcionario";
+import CardProd from "./Components/Card.prod";
+import AlertaPopup from "./Components/AlertaPopup";
 import "./App.css";
 
 function App() {
@@ -51,7 +48,7 @@ function App() {
 
   // Cálculos dinâmicos
   const totalItens = Object.values(quantidades).reduce((acc, curr) => acc + curr, 0);
-
+  
   const valorTotalPedido = lanches.reduce((total, item) => {
     return total + item.preco * (quantidades[item.id] || 0);
   }, 0);
@@ -63,25 +60,9 @@ function App() {
   ];
 
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route 
-        path="/home" 
-        element={
-          <Home 
-            lanches={lanches}
-            quantidades={quantidades}
-            alterarQtd={alterarQtd}
-            esvaziarSacola={esvaziarSacola}
-            totalItens={totalItens}
-            valorTotalPedido={valorTotalPedido}
-            dadosFuncionarios={dadosFuncionarios}
-          />
-        } 
-      />
-      <Route path="/carrinho" element={<Carrinho />} />
-      <Route path="/pedido" element={<Pedido />} />
-    </Routes>
+    <>
+      
+    </>
   );
 }
 

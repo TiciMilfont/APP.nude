@@ -1,27 +1,24 @@
 import React from 'react';
 import './CardProd.css';
 
-function CardProd({ nome, preco, imagem, quantidade, setQuantidade }) {
+function CardProd({ nome, preco, imagem, quantidade, setQuantidade, destaque }) {
   return (
-    <div className="card-produto-retro">
-      {/* Área Destaque da Imagem */}
+    <div className={`card-produto-retro ${destaque ? 'card-destaque' : ''}`}>
       <div className="card-imagem-container">
-        <span className="badge-categoria">Destaque</span>
+        {destaque && <span className="badge-categoria">Destaque</span>}
         <img src={imagem} alt={nome} className="img-produto-retro" />
       </div>
 
-      {/* Área de Texto / Informações */}
       <div className="card-info-retro">
         <div className="card-header-info">
           <h3 className="nome-produto-retro">{nome}</h3>
           <span className="preco-produto-retro">R$ {preco.toFixed(2)}</span>
         </div>
 
-        {/* Controles de Quantidade */}
         <div className="card-acoes-retro">
           <div className="seletor-quantidade">
             <button 
-              type="button"
+              type="button" 
               className="btn-qtd" 
               onClick={() => setQuantidade(quantidade - 1)}
               disabled={quantidade === 0}
@@ -30,7 +27,7 @@ function CardProd({ nome, preco, imagem, quantidade, setQuantidade }) {
             </button>
             <span className="qtd-numero">{quantidade}</span>
             <button 
-              type="button"
+              type="button" 
               className="btn-qtd" 
               onClick={() => setQuantidade(quantidade + 1)}
             >
@@ -44,4 +41,3 @@ function CardProd({ nome, preco, imagem, quantidade, setQuantidade }) {
 }
 
 export default CardProd;
-
