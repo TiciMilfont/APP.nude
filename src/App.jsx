@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
-// Imports das Páginas (exatamente como na aula do seu professor)
 import Home from "./pages/Home";
 import Carrinho from "./pages/Carrinho";
 import Pedido from "./pages/Pedido";
@@ -10,6 +9,8 @@ import Login from "./pages/Login";
 import "./App.css";
 
 function App() {
+  const navigate = useNavigate();
+
   const lanches = [
     { id: 1, nome: "Hot-Dog Tradicional", preco: 20, categoria: "Dogs", imagem: "/imagem/tradi.png" },
     { id: 2, nome: "Hot-Dog Especial", preco: 28, categoria: "Dogs", imagem: "/imagem/espe.png" },
@@ -19,42 +20,64 @@ function App() {
     { id: 6, nome: "Suco", preco: 10, categoria: "Drinks", imagem: "/imagem/suco.jpg" },
   ];
 
-  // Estado das quantidades iniciando zerado para cada ID
   const [quantidades, setQuantidades] = useState({
     1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0
   });
 
-  // Estado para controlar o Pop-up do alerta
-  const [produtoAlerta, setProdutoAlerta] = useState(null);
+  // Estado para armazenar os pedidos da cozinha
+  const [listaPedidos, setListaPedidos] = useState([]);
 
-  // Função para alterar a quantidade de um item
   const alterarQtd = (id, novaQtd) => {
-    const qtdAntiga = quantidades[id] || 0;
-
-    // Se AUMENTOU, abre o alerta com o produto
-    if (novaQtd > qtdAntiga) {
-      const itemAdicionado = lanches.find((p) => p.id === id);
-      setProdutoAlerta(itemAdicionado);
-    }
-
-    // Atualiza o objeto de quantidades
     setQuantidades((prev) => ({
       ...prev,
       [id]: Math.max(0, novaQtd)
     }));
   };
 
-  // Zera a sacola
   const esvaziarSacola = () => {
     setQuantidades({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 });
   };
 
-  // Cálculos dinâmicos
   const totalItens = Object.values(quantidades).reduce((acc, curr) => acc + curr, 0);
 
   const valorTotalPedido = lanches.reduce((total, item) => {
     return total + item.preco * (quantidades[item.id] || 0);
   }, 0);
+
+  const finalizarPedido = () => {
+    if (totalItens === 0) {
+      alert("Seu carrinho está vazio!");
+      return;
+    }
+
+    const itensComprados = lanches
+      .filter((item) => quantidades[item.id] > 0)
+      .map((item) => ({
+        nome: item.nome,
+        qtd: quantidades[item.id]
+      }));
+
+    const novoPedido = {
+      id: listaPedidos.length + 1,
+      horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      mesa: "01",
+      itens: itensComprados,
+      status: "Recebido"
+    };
+
+    setListaPedidos((prev) => [...prev, novoPedido]);
+    esvaziarSacola();
+    navigate("/pedido");
+  };
+
+  // APENAS UMA DECLARAÇÃO DESTA FUNÇÃO AQUI:
+  const alterarStatusPedido = (idPedido, novoStatus) => {
+    setListaPedidos((pedidosAnteriores) =>
+      pedidosAnteriores.map((pedido) =>
+        pedido.id === idPedido ? { ...pedido, status: novoStatus } : pedido
+      )
+    );
+  };
 
   const dadosFuncionarios = [
     { id: 1, nome: "Maria", cargo: "Gerente", imagem: "/imagem/dog3.jpg" },
@@ -73,6 +96,7 @@ function App() {
             quantidades={quantidades}
             alterarQtd={alterarQtd}
             esvaziarSacola={esvaziarSacola}
+            finalizarPedido={finalizarPedido}
             totalItens={totalItens}
             valorTotalPedido={valorTotalPedido}
             dadosFuncionarios={dadosFuncionarios}
@@ -80,7 +104,15 @@ function App() {
         } 
       />
       <Route path="/carrinho" element={<Carrinho />} />
-      <Route path="/pedido" element={<Pedido />} />
+      <Route 
+        path="/pedido" 
+        element={
+          <Pedido 
+            pedidos={listaPedidos} 
+            alterarStatusPedido={alterarStatusPedido} 
+          />
+        } 
+      />
     </Routes>
   );
 }

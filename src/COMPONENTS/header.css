@@ -1,83 +1,105 @@
-.titulo {
-    background-color: rgb(150, 17, 17);
+/* CARD ESQUERDO (DIVISÃO 50/50 PERFEITA) */
+.card-header-navegacao {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  height: 100%; /* Preenche toda a altura do container do topo */
 }
 
-.titulo h1{
-    color: rgb(236, 209, 54);
+/* --- 1. HALFE SUPERIOR: LOGO LANCHYS --- */
+.logo-container-original {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1; /* Ocupa a metade de cima */
+  margin-bottom: 8px;
 }
 
+/* Tarja estendida e encorpada */
+.caixa-logo-vinho {
+  background-color: #8c0a0a;
+  width: 90%; /* Ocupa quase toda a largura do card */
+  padding: 12px 0; /* Aumenta a espessura da caixa de cima para baixo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 
+/* Texto LANCHYS ampliado e proporcional */
+.texto-logo-lanchys {
+  color: #f1cb14;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+  font-size: 34px; /* Fonte bem visível e preenchida */
+  font-weight: 800;
+  letter-spacing: 3px;
+  line-height: 1;
+}
 
+/* Subtítulo centralizado abaixo da tarja */
+.subtitulo-logo {
+  color: #0d122b;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
 
-.sacola-header {
-    text-align: center;
-    margin: 10px 0;
-  }
-  
-  .btn-sacola {
-    background-color: #e6db49;
-    color: rgb(167, 48, 48);
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-  }
-  
-  .btn-sacola:hover {
-    background-color: #e4e25f;
-    transform: scale(1.05);
-  }
+/* --- 2. METADE INFERIOR: BOTÕES ALINHADOS --- */
+.botoes-menu-horizontal {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex: 1; /* Ocupa a metade de baixo */
+}
 
-  /* Botão da sacola no Header */
-.btn-sacola {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border: 2px solid #e2e8f0;
-    border-radius: 50px;
-    padding: 6px 14px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .btn-sacola:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Imagem da sacola no Header */
-  .img-sacola-header {
-    width: 32px;
-    height: 32px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 8px;
-  }
-  
-  /* Contador de itens ao lado da imagem */
-  .badge-contador {
-    background-color: #e53e3e;
-    color: rgb(190, 26, 26);
-    font-weight: bold;
-    font-size: 0.9rem;
-    padding: 2px 8px;
-    border-radius: 12px;
-  }
+.btn-nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: #ffffff;
+  color: #222222;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 10px 4px; /* Aumenta a altura dos botões para preencher melhor */
+  border-radius: 8px;
+  border: 1px solid #d0d0d0;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
 
-  .btn-sacola {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* Espaço entre a imagem e o texto */
-  }
-  
-  .img-sacola-header {
-    width: 24px;
-    height: 24px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
+.btn-nav:hover {
+  background-color: #b82b2b;
+  color: #ffffff;
+  border-color: #b82b2b;
+}
+
+.img-sacola {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+
+.btn-pedidos {
+  background-color: #ffeaa7;
+  color: #d63031;
+  border-color: #fdcb6e;
+}
+
+.btn-pedidos:hover {
+  background-color: #fdcb6e;
+  color: #000000;
+}

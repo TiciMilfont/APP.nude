@@ -1,28 +1,35 @@
-import "./header.css";
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Header.css";
 
-function Header({ titulo, subtitulo, totalItens }) {
+function Header({ totalItens }) {
   return (
-    <>
-      <div className="titulo">
-        <h1>{titulo}</h1>
+    <div className="card-header-navegacao">
+      {/* LOGO OFICIAL */}
+      <div className="logo-container-original">
+        <div className="caixa-logo-vinho">
+          <span className="texto-logo-lanchys">LANCHYS</span>
+        </div>
+        <span className="subtitulo-logo">the best hot-dog</span>
       </div>
 
-      <div className="Login">
-        <h2>{subtitulo}</h2>
-      </div>
-
-      {/* Exibe a sacola com a imagem sac.jpg e a quantidade total atualizada */}
-      <div className="sacola-header">
-        <button className="btn-sacola">
-          <img 
-            src="/imagem/sac.jpg" 
-            alt="Sacola" 
-            className="img-sacola-header" 
-          />
-          Sacola ({totalItens || 0})
-        </button>
-      </div>
-    </>
+      {/* BOTÕES DE NAVEGAÇÃO ABAIXO */}
+      <nav className="botoes-menu-horizontal">
+        <Link to="/home" className="btn-nav">
+          HOME
+        </Link>
+        <Link to="/" className="btn-nav">
+          LOGIN
+        </Link>
+        <Link to="/carrinho" className="btn-nav btn-sacola">
+          <img src="/imagem/sac.jpg" alt="sacola" className="img-sacola" />
+          CARRINHO ({totalItens || 0})
+        </Link>
+        <Link to="/pedido" className="btn-nav btn-pedidos">
+          PEDIDOS
+        </Link>
+      </nav>
+    </div>
   );
 }
 
