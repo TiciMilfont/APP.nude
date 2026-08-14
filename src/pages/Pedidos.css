@@ -1,0 +1,168 @@
+/* ==============================================
+   PAINEL DE PEDIDOS - COZINHA (Lanchys)
+   ============================================== */
+
+/* Container Principal do Conteúdo de Pedidos */
+.secao-cozinha-pagina {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Título Principal */
+  .titulo-pagina-cozinha {
+    color: #b82b2b;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  
+  /* Lista/Grid onde ficam os Cards dos Pedidos */
+  .container-pedidos-cozinha {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 520px;
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+  
+  /* Customização da Barra de Rolagem */
+  .container-pedidos-cozinha::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .container-pedidos-cozinha::-webkit-scrollbar-thumb {
+    background-color: #b82b2b;
+    border-radius: 10px;
+  }
+  
+  /* Card Individual de cada Pedido */
+  .card-pedido-cozinha {
+    background-color: #ffffff;
+    border: 2px solid #b82b2b;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card-pedido-cozinha:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(184, 43, 43, 0.15);
+  }
+  
+  /* Topo do Card (Número, Mesa, Horário) */
+  .topo-pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .topo-pedido h3 {
+    color: #b82b2b;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  
+  .topo-pedido p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #444;
+  }
+  
+  /* Divisória do Card */
+  .card-pedido-cozinha hr {
+    border: none;
+    border-top: 1px dashed #e0e0e0;
+    margin: 4px 0;
+  }
+  
+  /* Lista dos Itens do Pedido */
+  .itens-pedido-cozinha {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .itens-pedido-cozinha p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #222;
+  }
+  
+  .itens-pedido-cozinha strong {
+    color: #b82b2b;
+  }
+  
+  /* Seção de Controle de Status */
+  .status-pedido-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  
+  .status-titulo {
+    font-size: 0.85rem;
+    color: #555;
+  }
+  
+  .status-titulo strong {
+    color: #b82b2b;
+    text-transform: uppercase;
+  }
+  
+  /* Grupo de Botões para Mudar Status */
+  .botoes-status-grupo {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .btn-status {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1.5px solid #ccc;
+    background-color: #f9f9f9;
+    color: #555;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-status:hover {
+    background-color: #eee;
+    border-color: #bbb;
+  }
+  
+  /* Estados Ativos dos Botões */
+  .btn-status.ativo-recebido {
+    background-color: #f39c12;
+    color: #fff;
+    border-color: #d68910;
+  }
+  
+  .btn-status.ativo-preparando {
+    background-color: #2980b9;
+    color: #fff;
+    border-color: #2471a3;
+  }
+  
+  .btn-status.ativo-pronto {
+    background-color: #27ae60;
+    color: #fff;
+    border-color: #1e8449;
+  }

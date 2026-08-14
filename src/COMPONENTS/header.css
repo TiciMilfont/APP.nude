@@ -103,3 +103,41 @@
   background-color: #fdcb6e;
   color: #000000;
 }
+
+/* MASCOTE CENTRAL */
+.img-mascote-header {
+  width: 100%;             /* Usa toda a largura do card */
+  max-width: 260px;        /* Aumenta bastante o limite máximo */
+  height: 90px;            /* Dá mais altura livre */
+  object-fit: contain;     /* Evita distorcer */
+  margin: 0 auto;          /* Centraliza */
+  transform: scale(7);   /* EXPANDE a imagem tirando o efeito do espaço transparente */
+  display: block;
+}
+
+/* MASCOTE CENTRAL */
+.img-mascote-header {
+  width: 100%;
+  max-width: 200px;
+  height: 80px;
+  object-fit: contain;
+  margin: 5px auto;
+  display: block;
+  
+  /* 🚨 ESTA LINHA É A CHAVE: 
+     Ela faz o mouse "atravessar" a imagem do doguinho 
+     e clicar diretamente nos botões que estiverem por perto */
+  pointer-events: none; 
+}
+
+/* GARANTIR QUE A BARRA DE BOTÕES FIQUE POR CIMA DE TUDO */
+.botoes-menu-horizontal {
+  position: relative;
+  z-index: 10;
+}
+
+.btn-nav {
+  cursor: pointer;
+  position: relative;
+  z-index: 11;
+}

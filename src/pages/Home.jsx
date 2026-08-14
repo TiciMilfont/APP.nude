@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react'; // 1. Importe o useState
 import Header from '../Components/HEADER';
 import CardProd from '../Components/Card.prod';
 import Funcionario from '../Components/Funcionario';
+import AlertaPopup from '../Components/AlertaPopup'; // 2. Importe o AlertaPopup
 
 function Home({ 
   lanches, 
@@ -13,13 +14,37 @@ function Home({
   valorTotalPedido, 
   dadosFuncionarios 
 }) {
+  // 3. Estado local para saber qual produto disparou o alerta
+  const [produtoAlerta, setProdutoAlerta] = useState(null);
+
+  // 4. Função intermediária para checar se a quantidade AUMENTOU
+  const lidarComAlteracaoQtd = (produto, novaQtd) => {
+    const qtdAtual = quantidades[produto.id] || 0;
+
+    // Se a nova quantidade for maior, abre o pop-up
+    if (novaQtd > qtdAtual) {
+      setProdutoAlerta(produto);
+    }
+
+    // Chama a função global do App.jsx para atualizar o valor no carrinho
+    alterarQtd(produto.id, novaQtd);
+  };
+
   return (
     <div className="pagina-container-modelo">
-      
+
+      {/* 5. POP-UP DE ALERTA (Só renderiza se produtoAlerta não for null) */}
+      {produtoAlerta && (
+        <AlertaPopup 
+          produto={produtoAlerta} 
+          onClose={() => setProdutoAlerta(null)} 
+        />
+      )}
+
       {/* 1. TOPO: HEADER (ESQUERDA) + CARRINHO (DIREITA) */}
-      <div className="grid-topo-modelo">
+      <div className="topo-grid-container">
         <div className="bloco-banner-esquerda">
-          <Header titulo="LANCHYS" subtitulo="the best hot-dog" totalItens={totalItens} />
+          <Header totalItens={totalItens} />
         </div>
         
         {/* CARRINHO DE COMPRAS NO TOPO */}
@@ -88,7 +113,8 @@ function Home({
                 preco={produto.preco}
                 imagem={produto.imagem}
                 quantidade={quantidades[produto.id] || 0}
-                setQuantidade={(novaQtd) => alterarQtd(produto.id, novaQtd)}
+                // Usando a nova função manipuladora
+                setQuantidade={(novaQtd) => lidarComAlteracaoQtd(produto, novaQtd)}
                 destaque={produto.nome === "Hot-Dog Cósmico"}
               />
             ))}
@@ -108,14 +134,15 @@ function Home({
                 preco={produto.preco}
                 imagem={produto.imagem}
                 quantidade={quantidades[produto.id] || 0}
-                setQuantidade={(novaQtd) => alterarQtd(produto.id, novaQtd)}
+                // Usando a nova função manipuladora
+                setQuantidade={(novaQtd) => lidarComAlteracaoQtd(produto, novaQtd)}
                 destaque={false}
               />
             ))}
         </div>
       </div>
 
-      {/* 4. NOSSA EQUIPE (NA HORIZONTAL) */}
+      {/* 4. NOSSA EQUIPE */}
       <div className="bloco-equipe-modelo">
         <h2 className="titulo-secao-modelo">Nossa Equipe</h2>
         <div className="container-funcionarios-horizontal">

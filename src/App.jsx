@@ -6,6 +6,7 @@ import Carrinho from "./pages/Carrinho";
 import Pedido from "./pages/Pedido";
 import Login from "./pages/Login";
 
+import "./pages/Pedidos.css";
 import "./App.css";
 
 function App() {
@@ -24,7 +25,6 @@ function App() {
     1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0
   });
 
-  // Estado para armazenar os pedidos da cozinha
   const [listaPedidos, setListaPedidos] = useState([]);
 
   const alterarQtd = (id, novaQtd) => {
@@ -70,7 +70,6 @@ function App() {
     navigate("/pedido");
   };
 
-  // APENAS UMA DECLARAÇÃO DESTA FUNÇÃO AQUI:
   const alterarStatusPedido = (idPedido, novoStatus) => {
     setListaPedidos((pedidosAnteriores) =>
       pedidosAnteriores.map((pedido) =>
@@ -87,7 +86,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      {/* 1. ROTA DE LOGIN (Apenas uma declaração com totalItens) */}
+      <Route path="/" element={<Login totalItens={totalItens} />} />
+
+      {/* 2. ROTA DA HOME */}
       <Route 
         path="/home" 
         element={
@@ -103,13 +105,31 @@ function App() {
           />
         } 
       />
-      <Route path="/carrinho" element={<Carrinho />} />
+
+      {/* 3. ROTA DO CARRINHO */}
+      <Route 
+        path="/carrinho" 
+        element={
+          <Carrinho 
+            lanches={lanches}
+            quantidades={quantidades}
+            alterarQtd={alterarQtd}
+            esvaziarSacola={esvaziarSacola}
+            finalizarPedido={finalizarPedido}
+            totalItens={totalItens}
+            valorTotalPedido={valorTotalPedido}
+          />
+        } 
+      />
+
+      {/* 4. ROTA DE PEDIDOS */}
       <Route 
         path="/pedido" 
         element={
           <Pedido 
             pedidos={listaPedidos} 
-            alterarStatusPedido={alterarStatusPedido} 
+            alterarStatusPedido={alterarStatusPedido}
+            totalItens={totalItens}
           />
         } 
       />

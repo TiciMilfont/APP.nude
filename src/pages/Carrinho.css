@@ -1,0 +1,99 @@
+/* ==============================================
+   ESTILOS DA PÁGINA CARRINHO (Lanchys)
+   ============================================== */
+
+   .bloco-carrinho-modelo {
+    width: 100%;
+  }
+  
+  .card-total-geral {
+    background-color: #ffffff;
+    border: 2px solid #b82b2b;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .card-total-geral h2 {
+    color: #b82b2b;
+    font-size: 1.4rem;
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .total-itens-texto {
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .tabela-carrinho-container {
+    margin: 16px 0;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .tabela-carrinho {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tabela-carrinho th,
+  .tabela-carrinho td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .tabela-carrinho th {
+    color: #b82b2b;
+    font-weight: 700;
+  }
+  
+  .carrinho-vazio-texto {
+    text-align: center;
+    color: #888;
+    padding: 20px 0;
+  }
+  
+  .total-geral-preco {
+    color: #b82b2b;
+    font-size: 1.6rem;
+    text-align: right;
+    margin: 16px 0;
+  }
+  
+  .botoes-resumo {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+  
+  .btn-finalizar {
+    background-color: #b82b2b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .btn-finalizar:hover {
+    background-color: #962222;
+  }
+  
+  .btn-esvaziar {
+    background-color: transparent;
+    color: #777;
+    border: 1px solid #ccc;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn-esvaziar:hover {
+    background-color: #f5f5f5;
+    color: #333;
+  }

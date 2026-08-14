@@ -13,6 +13,13 @@ function Header({ totalItens }) {
         <span className="subtitulo-logo">the best hot-dog</span>
       </div>
 
+      {/* MASCOTE DOG NO ESPAÇO CENTRAL */}
+      <img 
+        src="/imagem/dog.png" 
+        alt="Mascote Hot-Dog" 
+        className="img-mascote-header" 
+      />
+
       {/* BOTÕES DE NAVEGAÇÃO ABAIXO */}
       <nav className="botoes-menu-horizontal">
         <Link to="/home" className="btn-nav">
