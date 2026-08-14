@@ -1,23 +1,34 @@
-import React from 'react';
-import Header from '../COMPONENTS/HEADER'; // Importa o Header oficial
-
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Header from '../COMPONENTS/HEADER';
 import "./Pedidos.css";
 
-function Pedido({ pedidos = [], alterarStatusPedido, totalItens }) {
+function Pedido({ pedidos = [], alterarStatusPedido, totalItens, tipoUsuario }) {
+  const navigate = useNavigate();
+
+  // Trava de segurança: se não for admin, bloqueia o acesso
+  useEffect(() => {
+    if (tipoUsuario !== "admin") {
+      alert("Acesso restrito à funcionários, acompanhe seu pedido na aba Carrinho");
+      navigate("/carrinho");
+    }
+  }, [tipoUsuario, navigate]);
+
+  // Se não for admin, não renderiza o painel da cozinha enquanto redireciona
+  if (tipoUsuario !== "admin") {
+    return null;
+  }
+
   return (
     <div className="pagina-container-modelo">
-      {/* GRID DO TOPO: HEADER NA ESQUERDA + CONTEÚDO NA DIREITA */}
       <div className="topo-grid-container">
-        
-        {/* LADO ESQUERDO: CARD MENU OFICIAL COM O MASCOTE */}
         <div className="bloco-banner-esquerda">
           <Header totalItens={totalItens} />
         </div>
 
-        {/* LADO DIREITO: PAINEL DE PEDIDOS DA COZINHA */}
         <div className="bloco-carrinho-modelo">
           <main className="secao-cozinha-pagina">
-            <h2 className="titulo-pagina-cozinha">PEDIDOS PARA A COZINHA</h2>
+            <h2 className="titulo-pagina-cozinha">PEDIDOS PARA A COZINHA (STAFF)</h2>
 
             <div className="container-pedidos-cozinha">
               {pedidos.length === 0 ? (
@@ -45,7 +56,6 @@ function Pedido({ pedidos = [], alterarStatusPedido, totalItens }) {
 
                     <hr />
 
-                    {/* PAINEL DE CONTROLE DE STATUS */}
                     <div className="status-pedido-container">
                       <span className="status-titulo">
                         STATUS ATUAL: <strong>{pedido.status || 'Recebido'}</strong>
@@ -83,7 +93,6 @@ function Pedido({ pedidos = [], alterarStatusPedido, totalItens }) {
             </div>
           </main>
         </div>
-
       </div>
     </div>
   );

@@ -1,94 +1,112 @@
-/* CONTAINER PRINCIPAL CENTRALIZADO NA TELA */
-.login-pagina-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  padding: 20px;
-}
+/* ==============================================
+   ESTILOS DO CARD DE LOGIN (Lanchys)
+   ============================================== */
 
-/* CARD DO LOGIN NO PADRÃO DO SITE */
-.card-login {
+/* Card principal do Login alinhado ao card da esquerda */
+.card-login-container {
   background-color: #ffffff;
   border: 2px solid #b82b2b;
-  border-radius: 24px;
-  padding: 36px 32px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-/* TÍTULO PRINCIPAL */
-.card-login h2 {
-  color: #b82b2b;
-  font-size: 24px;
-  margin-bottom: 24px;
+/* Cabeçalho do Card */
+.login-header {
   text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-  font-weight: bold;
+  margin-bottom: 24px;
 }
 
-/* FORMULÁRIO EM COLUNA */
+.login-header h2 {
+  color: #b82b2b;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+/* Formulário e Distribuição dos Campos */
 .form-login {
   display: flex;
   flex-direction: column;
+  gap: 18px;
   width: 100%;
-  gap: 16px;
 }
 
-/* GRUPO DE INPUT + LABEL */
 .campo-grupo {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  text-align: left;
 }
 
 .campo-grupo label {
-  font-size: 13px;
-  font-weight: bold;
-  color: #444;
+  color: #b82b2b;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* CAMPOS DE TEXTO (USUÁRIO E SENHA) */
+/* Estilo dos Inputs */
 .input-login {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #e0e0e0;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 0.95rem;
+  color: #333;
+  background-color: #fafafa;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  background-color: #fdf5f2;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
 }
 
 .input-login:focus {
   border-color: #b82b2b;
-  box-shadow: 0 0 0 3px rgba(184, 43, 43, 0.15);
   background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(184, 43, 43, 0.1);
 }
 
-/* BOTÃO ENTRAR */
-.btn-entrar {
-  margin-top: 8px;
+.input-login::placeholder {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+/* Botão Entrar */
+.btn-entrar-login {
+  margin-top: 10px;
   background-color: #b82b2b;
   color: #ffffff;
   border: none;
   padding: 12px;
   border-radius: 10px;
-  font-size: 15px;
-  font-weight: bold;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(184, 43, 43, 0.2);
 }
 
-.btn-entrar:hover {
+.btn-entrar-login:hover {
   background-color: #962222;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(184, 43, 43, 0.3);
 }
 
-.btn-entrar:active {
+.btn-entrar-login:active {
   transform: translateY(0);
 }

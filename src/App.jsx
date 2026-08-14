@@ -6,11 +6,13 @@ import Carrinho from "./pages/Carrinho";
 import Pedido from "./pages/Pedido";
 import Login from "./pages/Login";
 
-import "./pages/Pedidos.css";
 import "./App.css";
 
 function App() {
   const navigate = useNavigate();
+
+  // Estado para controlar quem está logado ("cliente" ou "admin")
+  const [tipoUsuario, setTipoUsuario] = useState("cliente");
 
   const lanches = [
     { id: 1, nome: "Hot-Dog Tradicional", preco: 20, categoria: "Dogs", imagem: "/imagem/tradi.png" },
@@ -62,12 +64,14 @@ function App() {
       horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       mesa: "01",
       itens: itensComprados,
-      status: "Recebido"
+      status: "Pedido enviado"
     };
 
     setListaPedidos((prev) => [...prev, novoPedido]);
     esvaziarSacola();
-    navigate("/pedido");
+    
+    alert("Pedido enviado para a cozinha! Acompanhe o status aqui no Carrinho.");
+    navigate("/carrinho");
   };
 
   const alterarStatusPedido = (idPedido, novoStatus) => {
@@ -86,10 +90,11 @@ function App() {
 
   return (
     <Routes>
-      {/* 1. ROTA DE LOGIN (Apenas uma declaração com totalItens) */}
-      <Route path="/" element={<Login totalItens={totalItens} />} />
+      <Route 
+        path="/" 
+        element={<Login totalItens={totalItens} setTipoUsuario={setTipoUsuario} />} 
+      />
 
-      {/* 2. ROTA DA HOME */}
       <Route 
         path="/home" 
         element={
@@ -106,7 +111,6 @@ function App() {
         } 
       />
 
-      {/* 3. ROTA DO CARRINHO */}
       <Route 
         path="/carrinho" 
         element={
@@ -118,11 +122,11 @@ function App() {
             finalizarPedido={finalizarPedido}
             totalItens={totalItens}
             valorTotalPedido={valorTotalPedido}
+            pedidos={listaPedidos}
           />
         } 
       />
 
-      {/* 4. ROTA DE PEDIDOS */}
       <Route 
         path="/pedido" 
         element={
@@ -130,6 +134,7 @@ function App() {
             pedidos={listaPedidos} 
             alterarStatusPedido={alterarStatusPedido}
             totalItens={totalItens}
+            tipoUsuario={tipoUsuario}
           />
         } 
       />
