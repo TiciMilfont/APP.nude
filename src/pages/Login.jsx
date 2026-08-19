@@ -10,22 +10,25 @@ function Login({ totalItens, setTipoUsuario }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
+  
     if (usuario === "admin" && senha === "123") {
+      localStorage.setItem("usuarioLogado", "admin");
       setTipoUsuario("admin");
       navigate("/pedido");
-    } else if (usuario === "cliente") {
+    } else if (usuario === "cliente" && senha === "123") { 
+      localStorage.setItem("usuarioLogado", "cliente");
       setTipoUsuario("cliente");
       navigate("/home");
     } else {
-      alert("Usuário ou senha incorretos!");
+      alert("Usuário ou Senha inexistente");
     }
   };
+
 
   return (
     <div className="pagina-container-modelo">
       <div className="topo-grid-container">
-        {/* LADO ESQUERDO: HEADER / MENU */}
+        {/* LADO ESQUERDO: MENU botões */}
         <div className="bloco-banner-esquerda">
           <Header totalItens={totalItens} />
         </div>

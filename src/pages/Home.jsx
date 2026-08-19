@@ -46,6 +46,7 @@ function Home({
         <div className="bloco-banner-esquerda">
           <Header totalItens={totalItens} />
         </div>
+
         
         {/* CARRINHO DE COMPRAS NO TOPO */}
         <div className="bloco-carrinho-modelo">
