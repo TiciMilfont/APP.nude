@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../COMPONENTS/HEADER";
+import Header from "../COMPONENTS/Header";
 import "./Login.css";
 
 function Login({ totalItens, setTipoUsuario }) {

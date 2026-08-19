@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../COMPONENTS/HEADER';
+import Header from "../COMPONENTS/Header"; //
 import "./Pedidos.css";
 
 function Pedido({ pedidos = [], alterarStatusPedido, totalItens, tipoUsuario }) {

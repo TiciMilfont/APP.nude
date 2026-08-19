@@ -1,5 +1,5 @@
 import React, { useState } from 'react'; // 1. Importe o useState
-import Header from '../Components/HEADER';
+import Header from '../COMPONENTS/Header';
 import CardProd from '../Components/Card.prod';
 import Funcionario from '../Components/Funcionario';
 import AlertaPopup from '../Components/AlertaPopup'; // 2. Importe o AlertaPopup
