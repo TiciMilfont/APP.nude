@@ -1,8 +1,9 @@
 import React, { useState } from 'react'; // 1. Importe o useState
 import Header from '../COMPONENTS/Header';
-import CardProd from '../Components/Card.prod';
-import Funcionario from '../Components/Funcionario';
-import AlertaPopup from '../Components/AlertaPopup'; // 2. Importe o AlertaPopup
+import CardProd from "../COMPONENTS/Card.prod"; 
+
+import Funcionario from '../COMPONENTS/Funcionario';
+import AlertaPopup from '../COMPONENTS/AlertaPopup'; // 2. Importe o AlertaPopup
 
 function Home({ 
   lanches, 
