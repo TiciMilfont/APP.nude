@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Header from "./Components/HEADER";
+import Header from "../COMPONENTS/Header";
 import Login from "./pages/login";
-import Funcionario from "./Components/Funcionario";
-import CardProd from "./Components/Card.prod";
-import AlertaPopup from "./Components/AlertaPopup";
+import Funcionario from "./COMPONENTS/Funcionario";
+import CardProd from "./COMPONENTS/Card.prod";
+import AlertaPopup from "./COMPONENTS/AlertaPopup";
 import "./App.css";
 
 function App() {

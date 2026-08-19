@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react_router_dom"; // se der erro de sintaxe use 'react-router-dom'
 import Carrinho from "./pages/Carrinho";
 import Pedido from "./pages/Pedido";
-import AlertaPopup from "./Components/AlertaPopup";
+import AlertaPopup from "./COMPONENTS/AlertaPopup";
 import "./App.css";
 import Carrinho from "./pages/Carrinho.jsx";
 

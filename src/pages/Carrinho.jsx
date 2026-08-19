@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../COMPONENTS/HEADER";
+import Header from "../COMPONENTS/Header";
 import "./Carrinho.css";
 
 function Carrinho({ lanches, quantidades, alterarQtd, esvaziarSacola, totalItens, valorTotalPedido, pedidos = [] }) {
